@@ -1,0 +1,72 @@
+@use "variables" as *;
+@use "extend" as *;
+@use "mixin" as *;
+@use "base" as *;
+
+/* ==========================================================================
+   ESTILOS ESPECÍFICOS DE LA NAVBAR (index_2)
+   ========================================================================== */
+
+.navbar-nav {
+  // Evita el colapso de fuentes y textos largos observados en image_656085.png
+  .nav-link {
+    white-space: nowrap !important;
+    font-weight: 500;
+  }
+}
+
+.navbar-brand {
+  white-space: nowrap !important;
+}
+
+/* --- CONTENEDOR DE REDES Y LOGOS --- */
+.social-menu-item {
+  display: flex;
+  align-items: center;
+}
+
+.brand-divider {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.nav-social-link {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.15rem;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.25s ease, color 0.25s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    color: #ffffff;
+  }
+}
+
+/* --- AJUSTE EXCLUSIVO DESDE PANTALLAS MEDIANAS/GRANDES (Escritorio) --- */
+@media (min-width: 992px) {
+  .brand-divider {
+    border-left: 1px solid rgba(255, 255, 255, 0.2) !important; // Crea la barra divisoria vertical elegante
+    padding-left: 1.25rem !important;
+    margin-left: 0.5rem !important;
+  }
+}
+
+/* --- AJUSTE PARA DISPOSITIVOS MÓVILES (Desplegable Hamburguesa) --- */
+@media (max-width: 991px) {
+  .navbar-nav {
+    flex-direction: column !important; // Permite comportamiento de lista normal en celulares
+    padding: 1rem 0;
+    gap: 10px;
+  }
+
+  .brand-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important; // Línea horizontal sutil SOLO en móvil
+    padding-top: 1rem !important;
+    margin-top: 0.5rem !important;
+    width: 100%;
+    justify-content: center;
+  }
+}

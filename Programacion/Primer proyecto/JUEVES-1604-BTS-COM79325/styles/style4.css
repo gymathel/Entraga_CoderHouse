@@ -1,0 +1,251 @@
+/* --- VARIABLES Y CONFIGURACIÓN BASE --- */
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #764ba2;
+    --bg-light: #f8f9fa;
+    --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-light);
+}
+
+/* --- ANIMACIÓN LOGO SUPERIOR --- */
+.logo-animado:hover {
+    animation: bounce-logo 0.6s infinite alternate;
+    color: #e74c3c !important;
+}
+
+@keyframes bounce-logo {
+    from { transform: translateY(0) scale(1); }
+    to { transform: translateY(-5px) scale(1.03); }
+}
+
+/* --- ENLACES SOCIALES NAVBAR --- */
+.nav-social-link {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 1.2rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.nav-social-link:hover {
+    transform: scale(1.2);
+}
+
+/* Colores de Hover específicos de marca */
+.nav-social-link[title="Instagram"]:hover {
+    color: #E1306C; /* Instagram Pink */
+}
+
+.nav-social-link[title="Twitter / X"]:hover {
+    color: #1DA1F2; /* Twitter Blue / Light Sky */
+}
+
+/* --- CARRUSEL CON BORDES TRANSPARENTES --- */
+#heroCarousel {
+    background-color: var(--bg-light);
+}
+
+#heroCarousel .carousel-inner {
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+#heroCarousel .carousel-item img {
+    height: 500px;
+    object-fit: cover;
+}
+
+/* --- ESTILOS DE GALERÍA (PÁGINA DETALLES) --- */
+.gallery-img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.gallery-img:hover {
+    transform: scale(1.03);
+    filter: contrast(1.1);
+}
+
+/* --- BOTONES: COLOR, TRANSICIÓN Y ESCALA GENERAL --- */
+.btn, .btn-custom, .btn-gradient {
+    transition: var(--transition-bounce);
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* --- ESTRUCTURAS GRID Y FLEXBOX --- */
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    align-items: stretch; /* Fuerza a que las tarjetas de una misma fila midan lo mismo */
+}
+
+.custom-card {
+    flex: 1 1 300px;
+    max-width: 380px; /* Evita que las tarjetas se estiren demasiado en pantallas grandes */
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    border-top: 6px solid var(--primary-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: var(--transition-bounce);
+    
+    /* Configuración flex interna para empujar el botón al fondo */
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-card p {
+    margin-bottom: 1.5rem;
+}
+
+.custom-card .btn {
+    margin-top: auto; /* Empuja el botón automáticamente hacia la base de la tarjeta */
+    align-self: center; /* Centra el botón horizontalmente */
+    width: 100%; /* Opcional: hace que los botones ocupen todo el ancho de la tarjeta */
+}
+
+.custom-card:hover {
+    transform: translateY(-10px);
+}
+
+/* --- NUEVOS AJUSTES PARA COMPONENTES ACADÉMICOS Y SOBRE NOSOTROS --- */
+.about-section .bg-dark {
+    background-color: #1a252f !important; /* Un negro pulido a tono con el portafolio */
+}
+
+.academy-section .custom-card img {
+    transition: transform 0.5s ease;
+}
+
+.academy-section .custom-card:hover img {
+    transform: scale(1.02); /* Sutil efecto sobre las fotos de los talleres al pasar el mouse */
+}
+
+/* --- SECCIÓN QUICK CONTACT (CON CRECIMIENTO EXACTO DEL 10%) --- */
+.quick-contact {
+    background-color: #ffffff;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 8px auto 0 auto;
+}
+
+.contact-info-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+.contact-item a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.3s ease; 
+    transform-origin: center;
+}
+
+.contact-item i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+/* Hover específico para Celular / WhatsApp: Crece 10% y pasa a Verde */
+.contact-item .whatsapp-link:hover {
+    color: #25D366;
+    transform: scale(1.10);
+}
+
+.contact-item .whatsapp-link:hover i {
+    color: #25D366;
+}
+
+/* Hover específico para Correo Electrónico: Crece 10% y pasa a Violeta */
+.contact-item .email-link:hover {
+    color: var(--accent-color);
+    transform: scale(1.10);
+}
+
+.contact-item .email-link:hover i {
+    color: var(--accent-color);
+}
+
+/* --- ESTILOS DE LA PÁGINA DE CONTACTO (VIBRANTE / CRISTAL) --- */
+.contact-body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.93);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.custom-input {
+    border-radius: 10px;
+    border: 2px solid #eee;
+    padding: 12px;
+}
+
+.btn-gradient {
+    background: linear-gradient(to right, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+/* --- RESPONSIVIDAD GENERAL --- */
+@media (max-width: 768px) {
+    .contact-info-flex {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+    #heroCarousel .carousel-item img {
+        height: 300px;
+    }
+    /* Línea divisoria en móviles para el menú colapsado */
+    .border-lg-0 {
+        border: 0 !important;
+    }
+    .custom-card {
+        max-width: 100%; /* Permite ocupar todo el ancho en smartphones */
+    }
+}
